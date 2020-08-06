@@ -15,6 +15,7 @@ pipeline {
         }
         stage('Integration') {
             steps {
+	        sh 'chmod 777 -R *'
                 sh './node_modules/.bin/mocha ./test/test.js'
             }
         }
