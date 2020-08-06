@@ -8,15 +8,11 @@ pipeline {
     stages {
         stage('Start') {
             steps {
-        sh 'echo  ${NVM_DIR}'
-		sh 'wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash'
-		echo 'Exporting variables'
-		sh 'echo ${HOME}'
-		sh 'export NVM_DIR=${NVM_DIR}'
-		echo 'checking nvm'		
-		sh 'bash /var/lib/jenkins/.nvm/nvm.sh'
-		sh 'nvm --version || exit 1'
-		sh 'nvm install node'
+				sh 'echo  ${NVM_DIR}'
+				nodejs(nodeJSInstallationName: 'Node 6.x', configId: '<config-file-provider-id>') {
+                    sh 'npm config ls'
+                }
+		
            }
         }
 	 stage('Build') {
