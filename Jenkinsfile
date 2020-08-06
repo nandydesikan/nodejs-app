@@ -1,21 +1,12 @@
 pipeline {
-    agent {
-		docker {
-            image 'node:6-alpine'
-            args '-p 3000:3000'
-        }
-	
-	}
-	environment {
-        CI = 'true' 
-    }
+    agent any
    
     stages {
         stage('Start') {
             steps {
-					echo 'Install npm'		    			
-					sh 'sudo su'
-		    			sh 'npm install'
+                echo 'Install nvm'
+		sh 'wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash'
+		sh 'nvm install node'
             }
         }
 	 stage('Build') {
