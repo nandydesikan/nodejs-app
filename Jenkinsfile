@@ -9,6 +9,7 @@ pipeline {
         }
 		stage('Build') {
             steps {
+				sh 'chmod 777 integrate_test.sh'
                 sh 'git clone https://github.com/nandydesikan/nodejs-app.git'
             }
         }
@@ -29,3 +30,5 @@ pipeline {
    
     
 }
+
+
