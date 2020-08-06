@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Start') {
             steps {
-        echo 'Install nvm ${HOME} ${NVM_DIR}'
+        echo 'Install nvm ${env.HOME} ${env.NVM_DIR}'
 		sh 'wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash'
 		echo 'checking nvm'			
 		sh 'nvm --version || exit 1'
