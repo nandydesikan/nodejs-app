@@ -4,12 +4,14 @@ pipeline {
     stages {
         stage('Start') {
             steps {
-                echo 'Starting the build'
+                echo 'Install nvm'
+		sh 'wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash'
+		sh 'nvm install node'
             }
         }
-		stage('Build') {
+	 stage('Build') {
             steps {
-				sh 'chmod 777 integrate_test.sh'
+	       sh 'chmod 777 integrate_test.sh'
                 sh 'git clone https://github.com/nandydesikan/nodejs-app.git'
             }
         }
