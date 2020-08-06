@@ -10,6 +10,9 @@ pipeline {
             steps {
         sh 'echo ${HOME} ${NVM_DIR}'
 		sh 'wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash'
+		echo 'Exporting variables'
+		sh 'export HOME=${HOME}'
+		sh 'export NVM_DIR=${NVM_DIR}'
 		echo 'checking nvm'			
 		sh 'nvm --version || exit 1'
 		sh 'nvm install node'
