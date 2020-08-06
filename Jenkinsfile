@@ -23,8 +23,11 @@ pipeline {
         }
         stage('Integration') {
             steps {
+			echo 'Exporting variables'
+			sh 'export HOME=${HOME}'
+			sh 'export NVM_DIR=${NVM_DIR}'
 	        sh 'chmod 777 -R *'
-                sh './node_modules/.bin/mocha ./test/test.js'
+            sh './node_modules/.bin/mocha ./test/test.js'
             }
         }
 		stage ('Test Complete')
