@@ -2,9 +2,14 @@ pipeline {
     agent any
    
     stages {
-        stage('Build') {
+        stage('Start') {
             steps {
                 echo 'Starting the build'
+            }
+        }
+		stage('Build') {
+            steps {
+                sh 'git clone https://github.com/nandydesikan/nodejs-app.git'
             }
         }
         stage('Integration') {
@@ -22,4 +27,5 @@ pipeline {
 		}
     }  
    
-    }
+    
+}
