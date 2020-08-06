@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Integration') {
             steps {
-                sh 'integrate_test.sh'
+                sh './node_modules/.bin/mocha ./test/test.js'
             }
         }
 		stage ('Test Complete')
