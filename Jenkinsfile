@@ -13,7 +13,8 @@ pipeline {
 		echo 'Exporting variables'
 		sh 'export HOME=${HOME}'
 		sh 'export NVM_DIR=${NVM_DIR}'
-		echo 'checking nvm'			
+		echo 'checking nvm'		
+		sh 'bash /var/lib/jenkins/.nvm/nvm.sh'
 		sh 'nvm --version || exit 1'
 		sh 'nvm install node'
            }
@@ -41,7 +42,6 @@ pipeline {
 			}
 		
 		}
-    }  
-   
+    }   
     
 }
