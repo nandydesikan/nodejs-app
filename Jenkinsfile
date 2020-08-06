@@ -2,16 +2,16 @@ pipeline {
     agent any
 	
    environment {
-        HOME = '/var/lib/jenkins'
+        
         NVM_DIR='/var/lib/jenkins/.nvm'
     }
     stages {
         stage('Start') {
             steps {
-        sh 'echo ${HOME} ${NVM_DIR}'
+        sh 'echo  ${NVM_DIR}'
 		sh 'wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash'
 		echo 'Exporting variables'
-		sh 'export HOME=${HOME}'
+		sh 'echo ${HOME}'
 		sh 'export NVM_DIR=${NVM_DIR}'
 		echo 'checking nvm'		
 		sh 'bash /var/lib/jenkins/.nvm/nvm.sh'
