@@ -1,16 +1,19 @@
 pipeline {
     agent any
-   
+	
+   environment {
+        HOME = '/var/lib/jenkins'
+        NVM_DIR='/var/lib/jenkins/.nvm'
+    }
     stages {
         stage('Start') {
             steps {
         echo 'Install nvm'
 		sh 'wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash'
-		echo 'checking nvm'
-		sh 'bash ~/.nvm/nvm.sh'
+		echo 'checking nvm'			
 		sh 'nvm --version || exit 1'
 		sh 'nvm install node'
-            }
+           }
         }
 	 stage('Build') {
             steps {
