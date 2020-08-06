@@ -4,8 +4,11 @@ pipeline {
     stages {
         stage('Start') {
             steps {
-                echo 'Install nvm'
+        echo 'Install nvm'
 		sh 'wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash'
+		echo 'checking nvm'
+		sh 'bash ~/.nvm/nvm.sh'
+		sh 'nvm --version || exit 1'
 		sh 'nvm install node'
             }
         }
