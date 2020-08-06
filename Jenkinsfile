@@ -13,8 +13,8 @@ pipeline {
     stages {
         stage('Start') {
             steps {
-					echo 'Install npm'		
-					sh 'npm install'
+					echo 'Install npm'		    			
+					sh 'sudo npm install'
             }
         }
 	 stage('Build') {
