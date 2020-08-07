@@ -1,6 +1,8 @@
 pipeline {
     agent any
 	
+	
+   tools { nodejs "node" }	
    environment {
         
         NVM_DIR='/var/lib/jenkins/.nvm'
@@ -8,11 +10,10 @@ pipeline {
     stages {
         stage('Start') {
             steps {
-				sh 'echo  ${NVM_DIR}'
-				nodejs(nodeJSInstallationName: 'Node 6.x', configId: '<config-file-provider-id>') {
+					sh 'echo  ${NVM_DIR}'				
                     sh 'npm config ls'
-                }
-		
+					sh 'npm install'
+                		
            }
         }
 	 stage('Build') {
@@ -26,8 +27,7 @@ pipeline {
 			echo 'Exporting variables'
 			sh 'export HOME=${HOME}'
 			sh 'export NVM_DIR=${NVM_DIR}'
-	        sh 'chmod 777 -R *'
-            sh './node_modules/.bin/mocha ./test/test.js'
+	        sh 'chmod 777 -R *'            
             }
         }
 		stage ('Test Complete')
